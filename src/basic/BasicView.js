@@ -331,6 +331,9 @@ function BasicView(element, calendar, viewName) {
 		if (refreshCoordinateGrid) {
 			coordinateGrid.build();
 		}
+		if (overlayEnd < new Date()) {
+			return;  // don't show day hover on days older than today
+		}
 		var rowStart = cloneDate(t.visStart);
 		var rowEnd = addDays(cloneDate(rowStart), colCnt);
 		for (var i=0; i<rowCnt; i++) {
